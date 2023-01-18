@@ -1,6 +1,6 @@
-package alura.com.listadecompra.activity;
+package alura.com.listadecompra.ui.activity;
 
-import static alura.com.listadecompra.activity.ConstantesActivities.CHAVE_ALUNO;
+import static alura.com.listadecompra.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import alura.com.listadecompra.R;

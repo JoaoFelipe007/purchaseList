@@ -1,6 +1,4 @@
-package alura.com.listadecompra.activity;
-
-import static alura.com.listadecompra.activity.ConstantesActivities.CHAVE_ALUNO;
+package alura.com.listadecompra.ui.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,24 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import alura.com.listadecompra.R;
 import alura.com.listadecompra.model.Produto;
 import alura.com.listadecompra.dao.ProdutoDAO;
+import alura.com.listadecompra.ui.adapter.ListaProdutoAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TITLE_APPBAR = "Lista de Produtos";
     final ProdutoDAO produtoDAO = new ProdutoDAO();
-    private ArrayAdapter<Produto> adapter;
+    private ListaProdutoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,16 +112,14 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Produto produtoEscolhido = (Produto) parent.getItemAtPosition(position);
                 Intent vaiParaFormProduto = new Intent(MainActivity.this, FormCadastroProdutoActivity.class);
-                vaiParaFormProduto.putExtra(CHAVE_ALUNO, produtoEscolhido);
+                vaiParaFormProduto.putExtra(ConstantesActivities.CHAVE_ALUNO, produtoEscolhido);
                 startActivity(vaiParaFormProduto);
             }
         });
     }
 
     private void configuraAdpaterView(ListView listProduto) {
-        adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1
-        );
+        adapter =new ListaProdutoAdapter(this);
         listProduto.setAdapter(adapter);
     }
 }
