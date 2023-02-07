@@ -52,6 +52,7 @@ public class ListaProdutoAdapter extends BaseAdapter {
 
     public void clear() {
         produtoList.clear();
+        notifyDataSetChanged();
     }
 
     public void addAll(List<Produto> listaProduto) {
@@ -60,5 +61,6 @@ public class ListaProdutoAdapter extends BaseAdapter {
 
     public void remove(Produto produtoEscolhido) {
         produtoList.remove(produtoEscolhido);
+        notifyDataSetChanged();
     }
 }

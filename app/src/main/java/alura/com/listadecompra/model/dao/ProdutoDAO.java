@@ -1,4 +1,4 @@
-package alura.com.listadecompra.dao;
+package alura.com.listadecompra.model.dao;
 
 import androidx.annotation.Nullable;
 

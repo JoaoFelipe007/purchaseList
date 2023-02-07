@@ -17,27 +17,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Digite o nome do produto"
+            android:hint="@string/palceholder_produto"
             android:inputType="textCapWords"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/activity_form_cadastro_preco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Digite o valor "
+            android:hint="@string/placeholder_valor"
             android:inputType="numberDecimal"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/activity_form_cadastro_marca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="Digite a marca"
+            android:hint="@string/placeholder_marca"
             android:inputType="textCapWords"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:importantForAutofill="no" />
 
     </LinearLayout>
 </ScrollView>

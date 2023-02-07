@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Lista de Compra</string>
+    <string name="palceholder_produto">Digite o nome do produto</string>
+    <string name="placeholder_valor">Digite o valor</string>
+    <string name="placeholder_marca">Digite a marca</string>
 </resources>

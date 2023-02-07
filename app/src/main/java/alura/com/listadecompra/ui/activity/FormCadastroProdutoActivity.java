@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 import alura.com.listadecompra.R;
 import alura.com.listadecompra.model.Produto;
-import alura.com.listadecompra.dao.ProdutoDAO;
+import alura.com.listadecompra.model.dao.ProdutoDAO;
 
 public class FormCadastroProdutoActivity extends AppCompatActivity {
 

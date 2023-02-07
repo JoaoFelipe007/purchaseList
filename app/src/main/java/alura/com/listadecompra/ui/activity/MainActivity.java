@@ -3,26 +3,22 @@ package alura.com.listadecompra.ui.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import alura.com.listadecompra.R;
 import alura.com.listadecompra.model.Produto;
-import alura.com.listadecompra.dao.ProdutoDAO;
+import alura.com.listadecompra.model.dao.ProdutoDAO;
 import alura.com.listadecompra.ui.adapter.ListaProdutoAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,14 +48,29 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {// configura o menu de contexto
         int itemId = item.getItemId();
         if(itemId == R.id.acticity_main_menu_remover) {
-            AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();/* Desse jeito o menuInfo só vai funcionar para
-       os adapter view... e o menu info serve para pegar mais informações do adapter*/
-            Produto produtoEscolhido = adapter.getItem(menuInfo.position);
-            produtoDAO.remove(produtoEscolhido);
-            adapter.remove(produtoEscolhido);
-            mostraOTotal();
+            confirmaRemocao(item);
         }
         return super.onContextItemSelected(item);
+    }
+
+    private void confirmaRemocao(@NonNull MenuItem item) {
+        new AlertDialog
+                .Builder(this)
+                .setTitle("Removendo Aluno")
+                .setMessage("Você tem certeza que deseja excluir o produto da sua lista de compras")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();/* Desse jeito o menuInfo só vai funcionar para
+   os adapter view... e o menu info serve para pegar mais informações do adapter*/
+                        Produto produtoEscolhido = adapter.getItem(menuInfo.position);
+                        produtoDAO.remove(produtoEscolhido);
+                        adapter.remove(produtoEscolhido);
+                        mostraOTotal();
+                    }
+                })
+                .setNegativeButton("Não",null)
+                .show();
     }
 
     @Override
